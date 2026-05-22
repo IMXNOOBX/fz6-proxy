@@ -283,7 +283,7 @@ BOOL APIENTRY DllMain(HMODULE, DWORD reason, LPVOID) {
     if (reason == DLL_PROCESS_ATTACH) {
     #ifdef _DEBUG
         LOG_INIT();
-        LOG_OUT("d3d12-proxy.log") // The game seems to have a runtime check that crashes on unverified files
+        //LOG_OUT("d3d12-proxy.log") // The game seems to have a runtime check that crashes on unverified files
     #endif
         LOG(INFO, "DLL_PROCESS_ATTACH: d3d12.dll proxy loaded!");
     }

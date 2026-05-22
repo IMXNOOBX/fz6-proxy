@@ -1,146 +1,20 @@
-# Forza RX 580 FH201/FH205 Fix
+# 📍 Forza RX 570/580 FH201/FH205 Fix
 
-Fix experimental para placas **AMD RX 580 / Polaris** que recebem erro **FH201** ou **FH205** ao abrir o jogo.
+This is a fork of [Forza-Horizon-6-RX-580-FH201-FH205-Fix](https://github.com/Megadroidgames/Forza-Horizon-6-RX-580-FH201-FH205-Fix) with the compatibility for RX 570 GPU cards. Its an experimental fix for **FH201** or **FH205** errors when launching the game. Im no expert in the field, i suggest checking the original project for more information.
 
-Criado por **João Lucas**.
+## 🕹️ Instructions
 
-Canal no YouTube: https://www.youtube.com/@MEGADROIDGAMESS
+> This are the steps that best worked for me, this is an experimental fix, because microslop doesnt know how to properly develop games fro their own plataform.
 
+1. Verify you have the following version of amd drivers: [`amd-software-adrenalin-edition-23.10.01.14-win10-win11-work-graphs (direct download)`](https://drivers.amd.com/drivers/amd-software-adrenalin-edition-23.10.01.14-win10-win11-work-graphs.exe).
+    1.1. If you have any issues installing this version, i suggest selecting `minimal install` or using [Display Driver Unintaller](https://github.com/Wagnard/display-drivers-uninstaller)
 
-## Antes de começar
+2. Download or Compile (preferred) the file: `d3d12.dll`.
+3. Move the file to your root game directory (ex: `...\WindowsApps\Microsoft.ForteBaseGame_3.360.259.0_x64__xxxxxxxxxxx`) (*)
+4. Run the game as usual
 
-Este fix foi feito para quem instalou o driver AMD Agility SDK / Work Graphs e ainda fica preso no erro **FH201**.
+(*) *Windows protects the `WindowsApps` folder setting `TrustedInstaller` as owner, so you will have to change permissions to your user for you to access the folder*
 
-O driver usado nos testes foi:
+## ❗More info
 
-```text
-amd-software-adrenalin-edition-23.10.01.14-win10-win11-work-graphs
-```
-
-Importante:
-
-- O fix é experimental.
-- Pode não funcionar em todas as placas ou versões do jogo.
-- Não inclui arquivos do jogo.
-- Não remove DRM.
-- Use por sua conta e risco.
-
-## Como instalar
-
-1. Baixe este repositório.
-
-2. Abra a pasta:
-
-```text
-bin
-```
-
-3. Copie o arquivo:
-
-```text
-d3d12.dll
-```
-
-4. Cole esse arquivo na pasta principal do jogo, onde fica o executável.
-
-Exemplo:
-
-```text
-...\Forza Horizon 6\d3d12.dll
-```
-
-A pasta certa é a mesma onde ficam vários arquivos `.dll` do jogo e o executável principal.
-
-5. Abra o jogo normalmente.
-
-## Como saber se está funcionando
-
-Se antes aparecia:
-
-```text
-FH201
-FH205
-```
-
-e agora o jogo abre, o fix está carregando corretamente.
-
-O fix também cria um arquivo de log na pasta do jogo:
-
-```text
-ForzaFix_RX580.log
-```
-
-Se esse arquivo aparecer, significa que a DLL foi carregada.
-
-## Se ainda der FH205
-
-O erro **FH205** normalmente significa que o driver ainda não está reportando suporte a **Enhanced Barriers**.
-
-Nesse caso, instale o driver AMD Agility SDK / Work Graphs e reinicie o PC.
-
-Depois rode:
-
-```text
-tools\D3D12Caps.exe
-```
-
-Procure esta linha:
-
-```text
-OPTIONS12: OK EnhancedBarriersSupported=TRUE
-```
-
-Se aparecer `FALSE`, o driver não ativou o suporte necessário.
-
-## Se der FHE01 ou fechar sozinho
-
-Tente:
-
-- verificar a integridade dos arquivos do jogo;
-- remover outros mods/fixes;
-- remover `dxgi.dll`, ReShade, OptiScaler ou outras DLLs de terceiros da pasta do jogo;
-- testar com o jogo limpo e só este `d3d12.dll`.
-
-## Como remover o fix
-
-Apague este arquivo da pasta do jogo:
-
-```text
-d3d12.dll
-```
-
-Pronto. O jogo volta a usar o DirectX normal do Windows.
-
-## Para desenvolvedores
-
-O código fonte está em:
-
-```text
-src
-```
-
-Para compilar, instale:
-
-- Visual Studio 2022 Build Tools;
-- Desktop development with C++;
-- Windows SDK.
-
-Depois rode:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\build_proxy.ps1
-```
-
-A DLL compilada vai sair em:
-
-```text
-proxy_build\d3d12.dll
-```
-
-## O que o fix faz
-
-Ele cria uma DLL proxy chamada `d3d12.dll`.
-
-Ela intercepta algumas chamadas do DirectX 12 e força o jogo a enxergar suporte a `Feature Level 12_1`, ajudando a passar pelo erro **FH201**.
-
-O suporte a **Enhanced Barriers** precisa vir do driver. Por isso o driver AMD Agility SDK / Work Graphs é importante.
+More info on [The Original Documentation (EN)](./README.en.md) or [The Original Documentation (PT)](./README.pt.md)
