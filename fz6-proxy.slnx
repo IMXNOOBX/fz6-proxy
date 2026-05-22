@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="caps/caps.vcxproj" Id="956ad221-1fb3-4aa7-a5f2-0b0e61a672c1" />
+  <Project Path="src/src.vcxproj" Id="fdf45317-ed26-4be1-8fc9-12076dddaac9" />
+</Solution>

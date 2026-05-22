@@ -37,7 +37,7 @@ int main() {
             continue;
         }
 
-        DXGI_ADAPTER_DESC1 desc {};
+        DXGI_ADAPTER_DESC1 desc{};
         adapter->GetDesc1(&desc);
 
         wprintf(L"\nAdapter %u: %ls\n", i, desc.Description);
@@ -63,21 +63,21 @@ int main() {
                 static_cast<unsigned long>(hr));
 
             if (SUCCEEDED(hr)) {
-                D3D12_FEATURE_DATA_D3D12_OPTIONS opts {};
+                D3D12_FEATURE_DATA_D3D12_OPTIONS opts{};
                 HRESULT hrOpt = device->CheckFeatureSupport(D3D12_FEATURE_D3D12_OPTIONS, &opts, sizeof(opts));
                 std::printf("    OPTIONS: %s ResourceBindingTier=%u TiledResourcesTier=%u\n",
                     Hr(hrOpt),
                     opts.ResourceBindingTier,
                     opts.TiledResourcesTier);
 
-                D3D12_FEATURE_DATA_D3D12_OPTIONS7 opts7 {};
+                D3D12_FEATURE_DATA_D3D12_OPTIONS7 opts7{};
                 hrOpt = device->CheckFeatureSupport(D3D12_FEATURE_D3D12_OPTIONS7, &opts7, sizeof(opts7));
                 std::printf("    OPTIONS7: %s MeshShaderTier=%s SamplerFeedbackTier=%u\n",
                     Hr(hrOpt),
                     SUCCEEDED(hrOpt) ? MeshTier(opts7.MeshShaderTier) : "N/A",
                     SUCCEEDED(hrOpt) ? opts7.SamplerFeedbackTier : 0);
 
-                D3D12_FEATURE_DATA_D3D12_OPTIONS12 opts12 {};
+                D3D12_FEATURE_DATA_D3D12_OPTIONS12 opts12{};
                 hrOpt = device->CheckFeatureSupport(D3D12_FEATURE_D3D12_OPTIONS12, &opts12, sizeof(opts12));
                 std::printf("    OPTIONS12: %s EnhancedBarriersSupported=%s\n",
                     Hr(hrOpt),
